@@ -892,7 +892,7 @@ footer span {
     #hero {
         grid-template-columns: 1fr;
         padding: 1.5rem 1.5rem;
-        height: 110vh;
+        height: 90vh;
         gap: 1rem;
     }
 
