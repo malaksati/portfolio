@@ -25,6 +25,9 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="nav-toggle" id="navToggle">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <!-- HERO -->
@@ -99,8 +102,9 @@
             </div>
             <div class="project-details">
                 <h3 class="project-title">Restaurant Booking & Management System</h3>
-                <p class="project-desc">Led a team to build a web-based restaurant management system with Laravel, Bootstrap, and MySQL allowing customers 
-                    to book tables online and staff to manage reservations, table availability, and customer records 
+                <p class="project-desc">Led a team to build a web-based restaurant management system with Laravel,
+                    Bootstrap, and MySQL allowing customers
+                    to book tables online and staff to manage reservations, table availability, and customer records
                     from a single dashboard.</p>
                 <div class="project-meta">
                     <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-value">Laravel,
@@ -125,13 +129,22 @@
         </div>
 
         <div class="project-row reveal">
-            <div class="project-thumb">
-                <video class="project-video" autoplay muted loop playsinline src=""></video>
+            <div class="project-thumbb">
+                <div class="project-thumbb-inner">
+                    <div class="thumb-bar">
+                        <div class="thumb-dot" style="background:#ff5f57"></div>
+                        <div class="thumb-dot" style="background:#febc2e"></div>
+                        <div class="thumb-dot" style="background:#28c840"></div>
+                    </div>
+                    <span class="thumb-label" style="color:#2a2a2a;font-size:.7rem;letter-spacing:.3em">E-Commerce
+                        Platform</span>
+                </div>
             </div>
             <div class="project-details">
                 <h3 class="project-title">E-Commerce Platform</h3>
-                <p class="project-desc">A full-featured online store built with React front-end and Laravel REST API back-end, 
-                    supporting product management, cart, secure checkout, and an admin dashboard with 
+                <p class="project-desc">A full-featured online store built with React front-end and Laravel REST API
+                    back-end,
+                    supporting product management, cart, secure checkout, and an admin dashboard with
                     real-time inventory tracking.</p>
                 <div class="project-meta">
                     <div class="meta-row"><span class="meta-label">Stack</span><span class="meta-value">React,
@@ -140,9 +153,11 @@
                     <div class="meta-row"><span class="meta-label">Role</span><span class="meta-value">Full Stack
                             Developer</span>
                     </div>
-                    <div class="meta-row"><span class="meta-label">Year</span><span class="meta-value">Working on it - Coming Soon 2026</span>
+                    <div class="meta-row"><span class="meta-label">Year</span><span class="meta-value">Working on it -
+                            Coming Soon 2026</span>
                     </div>
-                    <div class="meta-row"><span class="meta-label">Type</span><span class="meta-value">Freelance Project</span>
+                    <div class="meta-row"><span class="meta-label">Type</span><span class="meta-value">Freelance
+                            Project</span>
                     </div>
                 </div>
                 <!-- <div class="project-links-row">
@@ -315,7 +330,7 @@
                     <a href="mailto:malaksati999@gmail.com" title="Email"><i class="fa-solid fa-at"></i></a>
                 </div>
             </div>
-            <form name="contact" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm"
                 class="contact-form reveal">
                 <!-- Required hidden input -->
                 <input type="hidden" name="form-name" value="contact" />

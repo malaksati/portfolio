@@ -35,7 +35,6 @@ document.querySelectorAll('.project-thumb').forEach(thumb => {
         });
 
         thumb.addEventListener('mouseleave', () => {
-            // resume thumbnail when mouse leaves
             if (!overlay.classList.contains('active')) {
                 document.querySelectorAll('.project-video').forEach(v => v.play());
             }
@@ -53,3 +52,81 @@ const closeOverlay = () => {
 overlayClose.addEventListener('click', closeOverlay);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeOverlay(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+
+const form = document.getElementById('contactForm');
+const notification = document.createElement('div');
+notification.style.cssText = `
+    position: fixed;
+    top: 4.5rem;
+    right: 2rem;
+    padding: .9rem 1.2rem;
+    font-family: var(--body);
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    border: 1px solid;
+    z-index: 99999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .3s, transform .3s;
+`;
+document.body.appendChild(notification);
+
+const showNotification = (message, success) => {
+    notification.textContent = message;
+    notification.style.background = success ? 'var(--accent)' : '#ff4444';
+    notification.style.color = success ? '#000' : '#fff';
+    notification.style.borderColor = success ? 'var(--accent)' : '#ff4444';
+    notification.style.opacity = '1';
+    notification.style.transform = 'translateY(0)';
+
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateY(10px)';
+    }, 5000);
+};
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    try {
+        const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+        });
+
+        if (res.ok) {
+            showNotification('✓ Message sent successfully!', true);
+            form.reset();
+        } else {
+            showNotification('✕ Something went wrong. Try again.', false);
+        }
+    } catch (err) {
+        showNotification('✕ Network error. Try again.', false);
+    }
+});
+
+const navToggle = document.getElementById('navToggle');
+const navLinksList = document.querySelector('.nav-links');
+
+navToggle.addEventListener('click', () => {
+    navLinksList.classList.toggle('open');
+    navToggle.classList.toggle('open');
+});
+
+navLinksList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinksList.classList.remove('open');
+        navToggle.classList.remove('open');
+    });
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+        navLinksList.classList.remove('open');
+        navToggle.classList.remove('open');
+    }
+});
